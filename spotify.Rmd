@@ -1,0 +1,77 @@
+---
+title: "Spotify Playlist Explorer"
+author: "Marie Le Bars"
+date: "21 mai 2016"
+output: 
+  html_document: 
+    highlight: null
+    theme: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+```
+###Presentation
+This is a personal project to practice on Coursera Data Science Specialization. Here I used the Spotify API with the to build plots on my playlist.
+
+###Libraries
+```{r results='hide'}
+library("httr")
+library("jsonlite")
+```
+###Credentials
+First I registered an application on [Spotify API](https://developer.spotify.com/my-applications) where I obtained credentials. These credentials have been saved in the variables spotifyKey and spotifySecret (not echo'd). I also saved my UserID and PlaylistID under the variables spotifyUser and spotifyPlaylist (also not echo'd).      
+```{r echo=FALSE}
+spotifyKey <- "abf8acc0b69c4d3e82babcf3afb9285d"
+spotifySecret <- "d86c2d1e91e74e0e8becd033caff8910"
+spotifyUser <- "marielb17"
+spotifyPlaylist <- "1behutK7QepdHdHh3COv0C"
+```
+###Authentication
+The code belows uses httr/jsonlite to request a token and authorize the app. 
+```{r results='hide'}
+spotifyEndpoint <- oauth_endpoint(NULL, 
+                                 "https://accounts.spotify.com/authorize", 
+                                 "https://accounts.spotify.com/api/token")
+spotifyApp <- oauth_app("spotify", spotifyKey, spotifySecret)
+spotifyToken <- oauth2.0_token(spotifyEndpoint, spotifyApp)
+```
+###Importing a playlist
+Now I can start importing my playlist. Spotify API only allows to import 100 tracks at a time so the function below will use the offset parameter to import batches of 100 tracks until the playlist is complete. The field parameters allows to import only the desired elements, in my case the total number of tracks and the albums ids.
+```{r}
+playlistTracksURL <- paste("https://api.spotify.com/v1/users/",spotifyUser,"/playlists/",
+                           spotifyPlaylist,"/tracks?fields=total,items(track(album(id)))",sep="")
+
+getTracks <- GET(playlistTracksURL, spotifyToken)
+startPlaylist <- jsonlite::fromJSON(toJSON(content(getTracks)))
+
+total <- as.matrix(startPlaylist[[1]]$track$album$id)
+
+if (startPlaylist$total > 100) {
+  offset <- trunc(startPlaylist$total/100)
+  for(i in 1:offset) {
+    playlistTracksURL <- paste("https://api.spotify.com/v1/users/",spotifyUser,"/playlists/",
+                               spotifyPlaylist,"/tracks?fields=items(track(album(id)))&offset=",i*100,sep="")
+    getTracks <- GET(playlistTracksURL, spotifyToken)
+    subPlaylist <- jsonlite::fromJSON(toJSON(content(getTracks)))
+    total <- rbind(total, as.matrix(subPlaylist[[1]]$track$album$id))
+  }
+}
+
+total <- as.data.frame(total)
+```
+The code below associates each album ID with the year of release of the album. This is the slow part of the whole function.
+```{r}
+for(i in 1:length(total[,1])) {
+  albumURL <- paste("https://api.spotify.com/v1/albums/", total[i,1], sep="")
+  getAlbum <- GET(albumURL, spotifyToken)
+  album <- jsonlite::fromJSON(toJSON(content(getAlbum)))
+  total[i,2] <- as.numeric(substr(album$release_date,1,4))
+}
+```
+###Final Plot
+Now we can plot the number of tracks by year of release.
+```{r}
+hist(total[,2], breaks = (max(total[,2])-min(total[,2])), 
+     col="lightblue", main = "Songs by year", xlab = "", ylab="")
+```
