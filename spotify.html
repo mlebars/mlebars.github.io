@@ -52,8 +52,12 @@ spotifyToken &lt;- oauth2.0_token(spotifyEndpoint, spotifyApp)</code></pre>
 <div id="importing-a-playlist" class="section level3">
 <h3>Importing a playlist</h3>
 <p>Now I can start importing my playlist. Spotify API only allows to import 100 tracks at a time so the function below will use the offset parameter to import batches of 100 tracks until the playlist is complete. The field parameters allows to import only the desired elements, in my case the total number of tracks and the albums ids.</p>
-<pre class="r"><code>playlistTracksURL &lt;- paste(&quot;https://api.spotify.com/v1/users/&quot;,spotifyUser,&quot;/playlists/&quot;,
-                           spotifyPlaylist,&quot;/tracks?fields=total,items(track(album(id)))&quot;,sep=&quot;&quot;)
+<pre class="r"><code>playlistTracksURL &lt;- paste(&quot;https://api.spotify.com/v1/users/&quot;,
+                           spotifyUser,
+                           &quot;/playlists/&quot;,
+                           spotifyPlaylist,
+                           &quot;/tracks?fields=total,items(track(album(id)))&quot;,
+                           sep=&quot;&quot;)
 
 getTracks &lt;- GET(playlistTracksURL, spotifyToken)</code></pre>
 <pre><code>## Auto-refreshing stale OAuth token.</code></pre>
@@ -64,8 +68,12 @@ total &lt;- as.matrix(startPlaylist[[1]]$track$album$id)
 if (startPlaylist$total &gt; 100) {
   offset &lt;- trunc(startPlaylist$total/100)
   for(i in 1:offset) {
-    playlistTracksURL &lt;- paste(&quot;https://api.spotify.com/v1/users/&quot;,spotifyUser,&quot;/playlists/&quot;,
-                               spotifyPlaylist,&quot;/tracks?fields=items(track(album(id)))&amp;offset=&quot;,i*100,sep=&quot;&quot;)
+    playlistTracksURL &lt;- paste(&quot;https://api.spotify.com/v1/users/&quot;,
+                               spotifyUser,
+                               &quot;/playlists/&quot;,
+                               spotifyPlaylist,
+                               &quot;/tracks?fields=items(track(album(id)))&amp;offset=&quot;
+                               ,i*100,sep=&quot;&quot;)
     getTracks &lt;- GET(playlistTracksURL, spotifyToken)
     subPlaylist &lt;- jsonlite::fromJSON(toJSON(content(getTracks)))
     total &lt;- rbind(total, as.matrix(subPlaylist[[1]]$track$album$id))
