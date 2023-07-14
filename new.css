@@ -6,3 +6,7 @@ body {
   font: normal 14px 'Victor Mono', monospace;
   margin:0;
 }
+
+main {
+  display: inline-block;
+}
