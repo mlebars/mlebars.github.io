@@ -1,26 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-55G665G');</script>
-<!-- End Google Tag Manager -->
-<title>Marie's Demo Site</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="new.css" type="text/css" />
-</head>
-<body>
-  <header>
-    <h1>Welcome to my GetFeedback Demo Site</h1>
-  </header>
-  <main>
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <script>(function(t,e,s,n){var o,a,c;t.SMCX=t.SMCX||[],e.getElementById(n)||(o=e.getElementsByTagName(s),a=o[o.length-1],c=e.createElement(s),c.type="text/javascript",c.async=!0,c.id=n,c.src="https://widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgdwZO4h_2FX7_2Fk8_2BSWalffM1KeyTgg8ONFty2IwEkVOb3_2Bo.js",a.parentNode.insertBefore(c,a))})(window,document,"script","smcx-sdk");</script>
-  </main>
-</body>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="oauth.js"></script>
+    <title>Marie's Web App</title>
+  </head>
+  <body>
+    <h1>Testing oAuth in JavaScript</h1>
+    <a id="oauthStart" href="">Click here to login</a>
+
+    <script type="text/javascript">
+    var auth_dialog_uri = SM_API_BASE + AUTH_CODE_ENDPOINT + "?redirect_uri=" + redirect_uri + "&client_id=" + client_id + "&response_type=code";
+    console.log(auth_dialog_uri);
+    window.onload = function() {
+      var link = document.getElementById("oauthStart");
+      link.setAttribute("href", auth_dialog_uri);
+      return false;
+    }
+  </script>
+  </body>
 </html>
