@@ -1,7 +1,7 @@
 var client_id = "80KuYkrISYermF12t4MCUg"
 var client_secret = "149296464087082804902322893091775271179"
 var myAccessToken = "cOmUpOXfevWx560egh1njqp2a6d0YkozFUQA3bgoi4m1t6AiPGBq1BNpPS-qkLy8EnAzYZdjRS6t-4SUUsV3YLvA2N0sB3PJHMw9VEZ3jILEZRtXkrOoiv3FQpXxYw5c"
-var redirect_uri = "https://smeapimarieapp.w3spaces.com/index.html"
+var redirect_uri = "https://mlebars.github.io/"
 var auth_code = window.location.search.slice(6,-16)
 
 var SM_API_BASE = "https://api.surveymonkey.com";
