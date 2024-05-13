@@ -2,21 +2,33 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script src="oauth.js"></script>
+    <script src="oauth.js" crossorigin="anonymous"></script>
+    <script src="apiGET.js"></script>
     <title>Marie's Web App</title>
   </head>
   <body>
     <h1>Testing oAuth in JavaScript</h1>
-    <a id="oauthStart" href="">Click here to login</a>
+
+    <div id="preAuth">
+    <p><a id="oauthStart" href="">Click here to login</a></p>
+    </div>
+
+    <div id="postAuth">
+      <p>yo</p>
+    </div>
+
 
     <script type="text/javascript">
-    var auth_dialog_uri = SM_API_BASE + AUTH_CODE_ENDPOINT + "?redirect_uri=" + redirect_uri + "&client_id=" + client_id + "&response_type=code";
-    console.log(auth_dialog_uri);
-    window.onload = function() {
-      var link = document.getElementById("oauthStart");
-      link.setAttribute("href", auth_dialog_uri);
-      return false;
-    }
-  </script>
+       if (window.location.search.length > 0) {
+        document.getElementById('preAuth').style.visibility = "hidden";
+        document.getElementById('preAuth').style.height = "0";
+        document.getElementById('preAuth').style.width = "0";
+        exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
+      } else {
+        document.getElementById('postAuth').style.visibility = "hidden";
+        document.getElementById('postAuth').style.height = "0";
+        document.getElementById('postAuth').style.width = "0";
+      }
+    </script>
   </body>
 </html>
