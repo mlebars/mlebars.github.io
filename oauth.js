@@ -32,9 +32,9 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		"redirect_uri": redirect_uri,
 		"client_id": client_id,
 		"grant_type": "authorization_code"
-	};
-	console.log(JSON.stringify(data));
-	var access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
+	}
+	//console.log(JSON.stringify(data));
+	access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
 	var access_token_response = await fetch(access_token_uri, {
 		"method": "POST",
 		"headers": {
@@ -45,7 +45,7 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		"body": JSON.stringify(data)
 	});
 	var access_json = access_token_response.json();
-	console.log("wesh");
+	//console.log("wesh");
 	return access_json["access_token"];
 }
 
