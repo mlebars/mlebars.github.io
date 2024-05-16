@@ -15,6 +15,12 @@ window.onload = function() {
     return false;
 }
 
+function handle_redirect(redirect_uri) {
+	// Parse authorization code out of url
+	var urlParams = new URLSearchParams(window.location.search);
+	return urlParams.get('code');
+}
+
 exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
 
 async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
