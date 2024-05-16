@@ -20,7 +20,7 @@ function handle_redirect(redirect_uri) {
 	var urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get('code');
 }
-
+var auth_code = handle_redirect(redirect_uri);
 exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
 
 async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
