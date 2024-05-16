@@ -2,7 +2,8 @@ var client_id = "80KuYkrISYermF12t4MCUg"
 var client_secret = "149296464087082804902322893091775271179"
 var myAccessToken = "bearer cOmUpOXfevWx560egh1njqp2a6d0YkozFUQA3bgoi4m1t6AiPGBq1BNpPS-qkLy8EnAzYZdjRS6t-4SUUsV3YLvA2N0sB3PJHMw9VEZ3jILEZRtXkrOoiv3FQpXxYw5c"
 var redirect_uri = "https://mlebars.github.io/"
-var auth_code = window.location.search.slice(6,-16)
+var urlParams = new URLSearchParams(window.location.search);
+var auth_code = urlParams.get('code');
 
 var SM_API_BASE = "https://api.surveymonkey.com";
 var AUTH_CODE_ENDPOINT = "/oauth/authorize";
