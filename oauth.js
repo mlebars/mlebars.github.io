@@ -4,11 +4,9 @@ var myAccessToken = "bearer cOmUpOXfevWx560egh1njqp2a6d0YkozFUQA3bgoi4m1t6AiPGBq
 var redirect_uri = "https://mlebars.github.io/";
 var urlParams = new URLSearchParams(window.location.search);
 var auth_code = urlParams.get('code');
-
 var SM_API_BASE = "https://api.surveymonkey.com";
 var AUTH_CODE_ENDPOINT = "/oauth/authorize";
 var ACCESS_TOKEN_ENDPOINT = "/oauth/token";
-
 
 var auth_dialog_uri = SM_API_BASE + AUTH_CODE_ENDPOINT + "?redirect_uri=" + redirect_uri + "&client_id=" + client_id + "&response_type=code";
 window.onload = function() {
@@ -16,14 +14,6 @@ window.onload = function() {
     link.setAttribute("href", auth_dialog_uri);
     return false;
 }
-
-/*function handle_redirect(redirect_uri) {
-	// Parse authorization code out of url
-	var urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get('code');
-}*/
-
-
 
 async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
 	var data = {
@@ -33,7 +23,6 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		"client_id": client_id,
 		"grant_type": "authorization_code"
 	}
-	//console.log(JSON.stringify(data));
 	access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
 	var access_token_response = await fetch(access_token_uri, {
 		"method": "POST",
@@ -45,7 +34,6 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		"body": JSON.stringify(data)
 	});
 	var access_json = access_token_response.json();
-	//console.log("wesh");
 	return access_json["access_token"];
 }
 
