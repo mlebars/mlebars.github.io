@@ -10,7 +10,7 @@ var AUTH_CODE_ENDPOINT = "/oauth/authorize";
 var ACCESS_TOKEN_ENDPOINT = "/oauth/token";
 
 
-var auth_dialog_uri = SM_API_BASE + AUTH_CODE_ENDPOINT + "?redirect_uri=" + redirect_uri + "&client_id=" + client_id + "&response_type=code&state=popoto";
+var auth_dialog_uri = SM_API_BASE + AUTH_CODE_ENDPOINT + "?redirect_uri=" + redirect_uri + "&client_id=" + client_id + "&response_type=code";
 window.onload = function() {
     var link = document.getElementById("oauthStart");
     link.setAttribute("href", auth_dialog_uri);
