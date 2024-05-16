@@ -15,6 +15,8 @@ window.onload = function() {
     return false;
 }
 
+exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
+
 async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
 	var data = {
 		"client_secret": client_secret,
