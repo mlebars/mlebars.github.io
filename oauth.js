@@ -2,8 +2,7 @@ var client_id = "80KuYkrISYermF12t4MCUg";
 var client_secret = "149296464087082804902322893091775271179";
 var myAccessToken = "bearer cOmUpOXfevWx560egh1njqp2a6d0YkozFUQA3bgoi4m1t6AiPGBq1BNpPS-qkLy8EnAzYZdjRS6t-4SUUsV3YLvA2N0sB3PJHMw9VEZ3jILEZRtXkrOoiv3FQpXxYw5c";
 var redirect_uri = "https://mlebars.github.io/";
-var urlParams = new URLSearchParams(window.location.search);
-//var auth_code = urlParams.get('code');
+
 var SM_API_BASE = "https://api.surveymonkey.com";
 var AUTH_CODE_ENDPOINT = "/oauth/authorize";
 var ACCESS_TOKEN_ENDPOINT = "/oauth/token";
@@ -20,8 +19,10 @@ function handle_redirect(redirect_uri) {
 	var urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get('code');
 }
-var auth_code = handle_redirect(redirect_uri);
-exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
+if (handle_redirect(redirect_uri)) {
+	var auth_code = handle_redirect(redirect_uri);
+	exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
+}
 
 async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
 	var data = {
