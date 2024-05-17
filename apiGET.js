@@ -29,4 +29,5 @@ function printSurveys(){
 	  	//text += cars[i] + "<br>";
 		console.log(mySurveys['data'][i]['title']);
 		i += 1;
+	}
 }
