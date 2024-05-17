@@ -9,8 +9,8 @@ const requestOptions = {
   	redirect: "follow"
 };
 
-let mySurveys = null;
-getSurveys();
+//let mySurveys = null;
+//getSurveys();
 var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
 function getSurveys(){
 	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count", requestOptions)
@@ -25,6 +25,8 @@ function getSurveys(){
 
 printSurveys();
 function printSurveys(){
+	let mySurveys = null;
+	getSurveys();
 	var mySurveysData = mySurveys['data'];
 	for (let i = 0; i < mySurveysData.length; i++) {
 	  	//text += cars[i] + "<br>";
