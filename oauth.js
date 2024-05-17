@@ -51,7 +51,10 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 			"Authorization": myAccessToken
 		},
 		"body": JSON.stringify(data)
-	});
+	}
+	console.log(access_token_response);
+	console.log(typeof(access_token_response));
+	);
 	var access_json = access_token_response.json();
 	return access_json["access_token"];
 }
