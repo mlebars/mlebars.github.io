@@ -79,7 +79,7 @@ var formBody = [];
   		formBody.push(encodedKey + "=" + encodedValue);
 	}
 formBody = formBody.join("&");
-access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
+var access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
 
 function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
 	fetch(access_token_uri, {
