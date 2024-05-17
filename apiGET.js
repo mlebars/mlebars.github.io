@@ -25,4 +25,5 @@ function getSurveys(){
 for (let i = 0; i < mySurveys['data'].length; i++) {
   	//text += cars[i] + "<br>";
 	console.log(mySurveys['data'][i]['title'];
-}
+	i += 1;
+});
