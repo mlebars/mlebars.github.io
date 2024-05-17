@@ -58,3 +58,29 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 	return access_json["access_token"];
 }
 
+function token2() {
+var details = {
+		"client_secret": client_secret,
+		"code": auth_code,
+		"redirect_uri": redirect_uri,
+		"client_id": client_id,
+		"grant_type": "authorization_code"
+};
+var formBody = [];
+for (var property in details) {
+  var encodedKey = encodeURIComponent(property);
+  var encodedValue = encodeURIComponent(details[property]);
+  formBody.push(encodedKey + "=" + encodedValue);
+}
+formBody = formBody.join("&");
+
+fetch('https://example.com/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    "Accept": "application/json",
+    "Authorization": myAccessToken
+  },
+  body: formBody
+})
+}
