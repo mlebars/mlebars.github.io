@@ -26,7 +26,8 @@ if (handle_redirect(redirect_uri)) {
 	preAuth.style.height = "0";
 	preAuth.style.width = "0";
 	var auth_code = handle_redirect(redirect_uri);
-	exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
+	//exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
+	token2();
 } else {
 	var postAuth = document.getElementById('postAuth');
 	postAuth.style.visibility = "hidden";
