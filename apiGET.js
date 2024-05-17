@@ -9,14 +9,15 @@ const requestOptions = {
   	redirect: "follow"
 };
 
-printSurveys();
+let mySurveys = null;
+console.log('mySurveys is null: '+mySurveys);
+getSurveys();
+console.log('getSurveys has run');
+console.log(mySurveys);
 
+printSurveys();
 function printSurveys(){
 	console.log('start printfct');
-	let mySurveys = null;
-	console.log('mySurveys is null: '+mySurveys);
-	getSurveys();
-	console.log('getSurveys has run');
 	console.log(mySurveys);
 	var mySurveysData = mySurveys['data'];
 	/*var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
