@@ -13,7 +13,7 @@ let mySurveys = null;
 getSurveys();
 
 function getSurveys(){
-	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count", requestOptions)
+	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count&sort_by=num_responses&sort_order=DESC", requestOptions)
 		.then(function(response) {
 			return response.json();
 		})
@@ -28,7 +28,6 @@ function printSurveys(mySurveys){
 	var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
 	for (let i = 0; i < mySurveysData.length; i++) {
 	  	text += '<tr><td class="surveyTitle" onclick=getSurveyID("'+mySurveysData[i]['id']+'");>'+mySurveysData[i]['title']+'</td><td class="surveyResponses">'+mySurveysData[i]['response_count']+'</td></tr>';
-		i += 1;
 	}
 	text += '</table>';
 	document.getElementById('postAuth').innerHTML = text;
