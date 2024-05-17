@@ -34,7 +34,7 @@ if (handle_redirect(redirect_uri)) {
 	postAuth.style.width = "0";
 }
 
-async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
+/*async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
 	var data = {
 		"client_secret": client_secret,
 		"code": auth_code,
@@ -56,8 +56,9 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 	console.log(typeof(access_token_response));
 	var access_json = access_token_response.json();
 	return access_json["access_token"];
-}
+}*/
 
+access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
 function token2() {
 var details = {
 		"client_secret": client_secret,
@@ -74,7 +75,7 @@ for (var property in details) {
 }
 formBody = formBody.join("&");
 
-fetch('https://example.com/login', {
+fetch(access_token_uri, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
