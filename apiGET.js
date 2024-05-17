@@ -9,9 +9,20 @@ const requestOptions = {
   	redirect: "follow"
 };
 
-//let mySurveys = null;
-//getSurveys();
-var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
+printSurveys();
+
+function printSurveys(){
+	let mySurveys = null;
+	getSurveys();
+	var mySurveysData = mySurveys['data'];
+	var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
+	for (let i = 0; i < mySurveysData.length; i++) {
+	  	//text += cars[i] + "<br>";
+		console.log(mySurveysData[i]['title']);
+		i += 1;
+	}
+}
+
 function getSurveys(){
 	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count", requestOptions)
 		.then(function(response) {
@@ -21,16 +32,4 @@ function getSurveys(){
 			mySurveys = data;
 			//console.log(mySurveys);
 		});
-}
-
-printSurveys();
-function printSurveys(){
-	let mySurveys = null;
-	getSurveys();
-	var mySurveysData = mySurveys['data'];
-	for (let i = 0; i < mySurveysData.length; i++) {
-	  	//text += cars[i] + "<br>";
-		console.log(mySurveysData[i]['title']);
-		i += 1;
-	}
 }
