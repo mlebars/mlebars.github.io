@@ -12,8 +12,7 @@ const requestOptions = {
 printSurveys();
 
 function printSurveys(){
-	let mySurveys = null;
-	getSurveys();
+	let mySurveys = getSurveys();
 	var mySurveysData = mySurveys['data'];
 	var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
 	for (let i = 0; i < mySurveysData.length; i++) {
@@ -29,7 +28,7 @@ function getSurveys(){
 			return response.json();
 		})
 		.then(function(data) {
-			mySurveys = data;
-			//console.log(mySurveys);
+			//mySurveys = data;
+			return data;
 		});
 }
