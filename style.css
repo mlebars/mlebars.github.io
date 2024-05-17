@@ -1,8 +1,17 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   color: #333E48;
+  text-align: center;
 }
 h1 {
-  text-align: center;
   color: #01BF6E;
+}
+table {
+    margin: auto;
+}
+.surveyTitle {
+  text-align: left;
+}
+.surveyResponses {
+  text-align: right;
 }
