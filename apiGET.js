@@ -15,7 +15,7 @@ getSurveys();
 console.log('getSurveys has run');
 console.log(mySurveys);
 
-printSurveys();
+//printSurveys();
 
 function getSurveys(){
 	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count", requestOptions)
@@ -24,11 +24,11 @@ function getSurveys(){
 		})
 		.then(function(data) {
 			mySurveys = data;
-			//return data;
+			printSurveys(mySurveys);
 		});
 }
 
-function printSurveys(){
+function printSurveys(mySurveys){
 	console.log('start printfct');
 	console.log(mySurveys);
 	var mySurveysData = mySurveys['data'];
