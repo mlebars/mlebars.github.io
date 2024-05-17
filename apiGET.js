@@ -30,7 +30,7 @@ function printSurveys(mySurveys){
 	var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
 	for (let i = 0; i < mySurveysData.length; i++) {
 	  	text += '<tr><td onclick=getSurveyID("'+mySurveysData[i]['id']+'");>'+mySurveysData[i]['title']+'</td><td>'+mySurveysData[i]['response_count'];
-		console.log(mySurveysData[i]['title']);
 		i += 1;
 	}
+	getElementById('postAuth').innerHTML = text;
 }
