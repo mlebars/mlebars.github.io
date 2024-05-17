@@ -75,7 +75,7 @@ for (var property in details) {
   formBody.push(encodedKey + "=" + encodedValue);
 }
 formBody = formBody.join("&");
-console.log(formbody);
+console.log(formBody);
 fetch(access_token_uri, {
   method: "POST",
   headers: {
