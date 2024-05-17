@@ -34,7 +34,7 @@ if (handle_redirect(redirect_uri)) {
 	postAuth.style.width = "0";
 }
 
-async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
+/*async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
 	var data = {
 		"client_secret": client_secret,
 		"code": auth_code,
@@ -63,4 +63,32 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 	var access_json = access_token_response.json();
 	console.log(access_json["access_token"]);
 	return access_json["access_token"];
+}*/
+
+var data = {
+	"client_secret": client_secret,
+	"code": auth_code,
+	"redirect_uri": redirect_uri,
+	"client_id": client_id,
+	"grant_type": "authorization_code"
+}
+var formBody = [];
+	for (var property in data) {
+  		var encodedKey = encodeURIComponent(property);
+  		var encodedValue = encodeURIComponent(data[property]);
+  		formBody.push(encodedKey + "=" + encodedValue);
+	}
+formBody = formBody.join("&");
+access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
+
+function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
+	fetch(access_token_uri, {
+		"method": "POST",
+		"headers": {
+			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+			"Accept": "application/json",
+			"Authorization": myAccessToken
+		},
+		"body": formBody
+	});
 }
