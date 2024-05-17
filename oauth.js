@@ -80,13 +80,13 @@ var formBody = [];
   		formBody.push(encodedKey + "=" + encodedValue);
 	}
 formBody = formBody.join("&");
-const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-myHeaders.append("Accept", "application/json");
-myHeaders.append("Authorization", myAccessToken);
+const myHeadersPost = new Headers();
+myHeadersPost.append("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+myHeadersPost.append("Accept", "application/json");
+myHeadersPost.append("Authorization", myAccessToken);
 const requestOptionsPost = {
 	method: "POST",
-  	headers: myHeaders,
+  	headers: myHeadersPost,
 	body: formBody
 };
 let access_token = null;
