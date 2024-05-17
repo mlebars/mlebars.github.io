@@ -34,7 +34,7 @@ if (handle_redirect(redirect_uri)) {
 	postAuth.style.width = "0";
 }
 
-/*async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
+async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
 	var data = {
 		"client_secret": client_secret,
 		"code": auth_code,
@@ -63,44 +63,4 @@ if (handle_redirect(redirect_uri)) {
 	var access_json = access_token_response.json();
 	console.log(access_json["access_token"]);
 	return access_json["access_token"];
-}*/
-
-var access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
-var data = {
-		"client_secret": client_secret,
-		"code": auth_code,
-		"redirect_uri": redirect_uri,
-		"client_id": client_id,
-		"grant_type": "authorization_code"
-	}
-var formBody = [];
-	for (var property in data) {
-  		var encodedKey = encodeURIComponent(property);
-  		var encodedValue = encodeURIComponent(data[property]);
-  		formBody.push(encodedKey + "=" + encodedValue);
-	}
-formBody = formBody.join("&");
-const myHeadersPost = new Headers();
-myHeadersPost.append("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-myHeadersPost.append("Accept", "application/json");
-myHeadersPost.append("Authorization", myAccessToken);
-const requestOptionsPost = {
-	method: "POST",
-  	headers: myHeadersPost,
-	body: formBody
-};
-let access_token = null;
-function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri){
-	fetch(access_token_uri, requestOptionsPost)
-		.then(function(response) {
-			console.log(response);
-			return response.json();
-			access_json1 = access_token_response.json();
-			access_token1 = access_json["access_token"]
-		})
-		.then(function(data) {
-			console.log(data);
-			access_json2 = access_token_response.json();
-			access_token2 = access_json["access_token"]
-		});
 }
