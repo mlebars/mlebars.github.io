@@ -16,17 +16,6 @@ console.log('getSurveys has run');
 console.log(mySurveys);
 
 printSurveys();
-function printSurveys(){
-	console.log('start printfct');
-	console.log(mySurveys);
-	var mySurveysData = mySurveys['data'];
-	/*var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
-	for (let i = 0; i < mySurveysData.length; i++) {
-	  	//text += cars[i] + "<br>";
-		console.log(mySurveysData[i]['title']);
-		i += 1;
-	}*/
-}
 
 function getSurveys(){
 	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count", requestOptions)
@@ -37,4 +26,16 @@ function getSurveys(){
 			mySurveys = data;
 			//return data;
 		});
+}
+
+function printSurveys(){
+	console.log('start printfct');
+	console.log(mySurveys);
+	var mySurveysData = mySurveys['data'];
+	/*var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
+	for (let i = 0; i < mySurveysData.length; i++) {
+	  	//text += cars[i] + "<br>";
+		console.log(mySurveysData[i]['title']);
+		i += 1;
+	}*/
 }
