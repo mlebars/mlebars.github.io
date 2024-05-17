@@ -46,7 +46,7 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 	var access_token_response = await fetch(access_token_uri, {
 		"method": "POST",
 		"headers": {
-			"Content-Type": "application/json;application/x-www-form-urlencoded",
+			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
 			"Accept": "application/json",
 			"Authorization": myAccessToken
 		},
