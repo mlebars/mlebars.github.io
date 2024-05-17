@@ -22,9 +22,11 @@ function getSurveys(){
 			//console.log(mySurveys);
 		});
 }
-console.log(mySurveys);
-for (let i = 0; i < mySurveys['data'].length; i++) {
-  	//text += cars[i] + "<br>";
-	console.log(mySurveys['data'][i]['title']);
-	i += 1;
+
+printSurveys()
+function printSurveys(){
+	for (let i = 0; i < mySurveys['data'].length; i++) {
+	  	//text += cars[i] + "<br>";
+		console.log(mySurveys['data'][i]['title']);
+		i += 1;
 }
