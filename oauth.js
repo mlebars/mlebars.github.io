@@ -58,7 +58,7 @@ if (handle_redirect(redirect_uri)) {
 	return access_json["access_token"];
 }*/
 
-access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
+var access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
 function token2() {
 var details = {
 		"client_secret": client_secret,
