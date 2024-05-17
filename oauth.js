@@ -27,7 +27,6 @@ if (handle_redirect(redirect_uri)) {
 	preAuth.style.width = "0";
 	var auth_code = handle_redirect(redirect_uri);
 	var userToken = exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
-	//token2();
 } else {
 	var postAuth = document.getElementById('postAuth');
 	postAuth.style.visibility = "hidden";
@@ -59,38 +58,9 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 			"Authorization": myAccessToken
 		},
 		"body": formBody
-		//"body": JSON.stringify(data)
 	});
 	console.log(access_token_response);
 	console.log(typeof(access_token_response));
 	var access_json = access_token_response.json();
 	return access_json["access_token"];
 }
-
-/*var access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
-function token2() {
-var details = {
-		"client_secret": client_secret,
-		"code": auth_code,
-		"redirect_uri": redirect_uri,
-		"client_id": client_id,
-		"grant_type": "authorization_code"
-};
-var formBody = [];
-for (var property in details) {
-  var encodedKey = encodeURIComponent(property);
-  var encodedValue = encodeURIComponent(details[property]);
-  formBody.push(encodedKey + "=" + encodedValue);
-}
-formBody = formBody.join("&");
-console.log(formBody);
-fetch(access_token_uri, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    "Accept": "application/json",
-    "Authorization": myAccessToken
-  },
-  body: formBody
-})
-}*/
