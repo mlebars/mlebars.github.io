@@ -12,23 +12,29 @@ const requestOptions = {
 printSurveys();
 
 function printSurveys(){
-	let mySurveys = getSurveys();
+	console.log('start printfct');
+	let mySurveys = null;
+	console.log('mySurveys is null: '+mySurveys);
+	getSurveys();
+	console.log('getSurveys has run');
+	console.log(mySurveys);
 	var mySurveysData = mySurveys['data'];
-	var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
+	/*var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
 	for (let i = 0; i < mySurveysData.length; i++) {
 	  	//text += cars[i] + "<br>";
 		console.log(mySurveysData[i]['title']);
 		i += 1;
-	}
+	}*/
 }
 
 function getSurveys(){
 	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count", requestOptions)
 		.then(function(response) {
+			console.log(response.json());
 			return response.json();
 		})
 		.then(function(data) {
-			//mySurveys = data;
-			return data;
+			mySurveys = data;
+			//return data;
 		});
 }
