@@ -76,9 +76,9 @@ for (var property in details) {
 formBody = formBody.join("&");
 
 fetch(access_token_uri, {
-  method: 'POST',
+  method: "POST",
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
     "Accept": "application/json",
     "Authorization": myAccessToken
   },
