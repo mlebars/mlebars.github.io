@@ -22,12 +22,12 @@ function getSurveys(){
 			//console.log(mySurveys);
 		});
 }
-
+var mySurveysData = mySurveys['data'];
 printSurveys()
 function printSurveys(){
-	for (let i = 0; i < mySurveys['data'].length; i++) {
+	for (let i = 0; i < mySurveysData.length; i++) {
 	  	//text += cars[i] + "<br>";
-		console.log(mySurveys['data'][i]['title']);
+		console.log(mySurveysData[i]['title']);
 		i += 1;
 	}
 }
