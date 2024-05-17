@@ -10,12 +10,7 @@ const requestOptions = {
 };
 
 let mySurveys = null;
-console.log('mySurveys is null: '+mySurveys);
 getSurveys();
-console.log('getSurveys has run');
-console.log(mySurveys);
-
-//printSurveys();
 
 function getSurveys(){
 	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count", requestOptions)
@@ -32,10 +27,10 @@ function printSurveys(mySurveys){
 	console.log('start printfct');
 	console.log(mySurveys);
 	var mySurveysData = mySurveys['data'];
-	/*var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
+	var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
 	for (let i = 0; i < mySurveysData.length; i++) {
-	  	//text += cars[i] + "<br>";
+	  	text += '<tr><td onclick=getSurveyID("'+mySurveysData[i]['id']+'");>'+mySurveysData[i]['title']'+</td><td>'+mySurveysData[i]['response_count'];
 		console.log(mySurveysData[i]['title']);
 		i += 1;
-	}*/
+	}
 }
