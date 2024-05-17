@@ -30,7 +30,6 @@ function printSurveys(){
 function getSurveys(){
 	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count", requestOptions)
 		.then(function(response) {
-			console.log(response.json());
 			return response.json();
 		})
 		.then(function(data) {
