@@ -24,8 +24,6 @@ function getSurveys(){
 }
 
 function printSurveys(mySurveys){
-	console.log('start printfct');
-	console.log(mySurveys);
 	var mySurveysData = mySurveys['data'];
 	var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
 	for (let i = 0; i < mySurveysData.length; i++) {
