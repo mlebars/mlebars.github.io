@@ -19,20 +19,6 @@ function handle_redirect(redirect_uri) {
 	return urlParams.get('code');
 }
 
-if (handle_redirect(redirect_uri)) {
-	var preAuth = document.getElementById('preAuth');
-	preAuth.style.visibility = "hidden";
-	preAuth.style.height = "0";
-	preAuth.style.width = "0";
-	var auth_code = handle_redirect(redirect_uri);
-	var userToken = exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
-} else {
-	var postAuth = document.getElementById('postAuth');
-	postAuth.style.visibility = "hidden";
-	postAuth.style.height = "0";
-	postAuth.style.width = "0";
-}
-
 async function exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri) {
 	var data = {
 		"client_secret": client_secret,
@@ -49,7 +35,6 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		}
 	formBody = formBody.join("&");
 	access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
-	//var access_token_response = await fetch(access_token_uri, {
 	const access_token_response = await fetch(access_token_uri, {
 		"method": "POST",
 		"headers": {
@@ -60,11 +45,20 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		"body": formBody
 	});
 	const response_data = await access_token_response.json();
-	console.log("response data: "+response_data);
 	const access_token = response_data["access_token"];
-	console.log("access_token: "+access_token);
 	return access_token;
-	//console.log(access_token_response);
-	//var access_json = access_token_response.json();
-	//return access_json["access_token"];
+}
+
+if (handle_redirect(redirect_uri)) {
+	var preAuth = document.getElementById('preAuth');
+	preAuth.style.visibility = "hidden";
+	preAuth.style.height = "0";
+	preAuth.style.width = "0";
+	var auth_code = handle_redirect(redirect_uri);
+	var userToken = exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
+} else {
+	var postAuth = document.getElementById('postAuth');
+	postAuth.style.visibility = "hidden";
+	postAuth.style.height = "0";
+	postAuth.style.width = "0";
 }
