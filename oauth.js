@@ -60,7 +60,9 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		"body": formBody
 	});
 	const response_data = await access_token_response.json();
+	console.log("response data: "+response_data);
 	const access_token = response_data["access_token"];
+	console.log("access_token: "+access_token);
 	return access_token;
 	//console.log(access_token_response);
 	//var access_json = access_token_response.json();
