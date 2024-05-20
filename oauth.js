@@ -61,6 +61,7 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 	});
 	const response_data = await access_token_response.json();
 	const access_token = response_data["access_token"];
+	return access_token;
 	//console.log(access_token_response);
 	//var access_json = access_token_response.json();
 	//return access_json["access_token"];
