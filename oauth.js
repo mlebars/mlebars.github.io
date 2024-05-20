@@ -49,7 +49,8 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		}
 	formBody = formBody.join("&");
 	access_token_uri = SM_API_BASE + ACCESS_TOKEN_ENDPOINT;
-	var access_token_response = await fetch(access_token_uri, {
+	//var access_token_response = await fetch(access_token_uri, {
+	const access_token_response = await fetch(access_token_uri, {
 		"method": "POST",
 		"headers": {
 			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -58,12 +59,9 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		},
 		"body": formBody
 	});
-	console.log(access_token_response);
-	var access_json = access_token_response.json();
-	printToken(access_json["access_token"]);
-	return access_json["access_token"];
-}
-
-function printToken(token){
-	console.log(token);
+	const data = await access_token_response.json();
+	const access_token = access_json["access_token"];
+	//console.log(access_token_response);
+	//var access_json = access_token_response.json();
+	//return access_json["access_token"];
 }
