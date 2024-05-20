@@ -60,7 +60,7 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 	});
 	console.log(access_token_response);
 	var access_json = access_token_response.json();
-	printToken(access_json);
+	printToken(access_json["access_token"]);
 	return access_json["access_token"];
 }
 
