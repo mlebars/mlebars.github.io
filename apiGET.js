@@ -87,17 +87,17 @@ function printResponses(result) {
 	document.getElementById('sampleResponse').innerHTML = responseText;
 }
 surveyListPage.onclick = function(){
-	surveyListPageobject.classList.remove('invisible');
+	surveyListPage.classList.remove('invisible');
 	sampleResponsePage.classList.add('invisible');
 	demoScriptPage.classList.add('invisible');
 }
 sampleResponsePage.onclick = function(){
-	surveyListPageobject.classList.add('invisible');
+	surveyListPage.classList.add('invisible');
 	sampleResponsePage.classList.remove('invisible');
 	demoScriptPage.classList.add('invisible');
 }
 demoScriptPage.onclick = function(){
-	surveyListPageobject.classList.add('invisible');
+	surveyListPage.classList.add('invisible');
 	sampleResponsePage.classList.add('invisible');
 	demoScriptPage.classList.remove('invisible');
 }
