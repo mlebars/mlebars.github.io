@@ -51,21 +51,23 @@ function getSurveyID(surveyID,access_token) {
 
 function printResponses(result) {
 	responseText = "<table><tr><th>ID</th><th>Status</th><th>Date Created</th><th>Question</th><th>Answer</th></tr>";
-	var response_id = result['data'][0]['id'];
-	var response_status = result['data'][0]['response_status'];
-	var date_created = result['data'][0]['date_created'];
-	var num_pages = result['data'][0]['pages'].length;
-
-	for (let p = 0; p < num_pages; p++) {
-	  	var questions = result['data'][0]['pages'][p]['questions'];
-		for (let q = 0; q < questions.length; q++) {
-			var question = questions[q];
-			var questionTitle = question['heading'];
-			var answers = question['answers'];
-			for (let a = 0; a < answers.length; a++) {
-				var answer = answers[a];
-				var answerText = answer['simple_text'];
-				responseText += '<tr><td>'+response_id+'</td><td>'+response_status+'</td><td>'+date_created+'</td><td>'+questionTitle+'</td><td>'+answerText+'</td></tr>';
+	for (let r = 0; r < result['data'].length; r++) {
+		var response_id = result['data'][r]['id'];
+		var response_status = result['data'][r]['response_status'];
+		var date_created = result['data'][r]['date_created'];
+		var num_pages = result['data'][r]['pages'].length;
+	
+		for (let p = 0; p < num_pages; p++) {
+		  	var questions = result['data'][0]['pages'][p]['questions'];
+			for (let q = 0; q < questions.length; q++) {
+				var question = questions[q];
+				var questionTitle = question['heading'];
+				var answers = question['answers'];
+				for (let a = 0; a < answers.length; a++) {
+					var answer = answers[a];
+					var answerText = answer['simple_text'];
+					responseText += '<tr><td>'+response_id+'</td><td>'+response_status+'</td><td>'+date_created+'</td><td>'+questionTitle+'</td><td>'+answerText+'</td></tr>';
+				}
 			}
 		}
 	}
