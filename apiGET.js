@@ -1,3 +1,10 @@
+var tab1 = document.getElementById('Tab1');
+var tab2 = document.getElementById('Tab2');
+var tab3 = document.getElementById('Tab3');
+var page1 = document.getElementById('Page1');
+var page2 = document.getElementById('Page2');
+var page3 = document.getElementById('Page3');
+
 let mySurveys = null;
 
 function getSurveys(access_token){
@@ -76,14 +83,10 @@ function printResponses(result) {
 
 	responseText += '</tbody></table>';
 	document.getElementById('Page2').innerHTML = responseText;
+	page1.classList.add('invisible');
+	page2.classList.remove('invisible');
+	page3.classList.add('invisible');
 }
-
-var tab1 = document.getElementById('Tab1');
-var tab2 = document.getElementById('Tab2');
-var tab3 = document.getElementById('Tab3');
-var page1 = document.getElementById('Page1');
-var page2 = document.getElementById('Page2');
-var page3 = document.getElementById('Page3');
 
 tab1.onclick = function(){
 	page1.classList.remove('invisible');
@@ -100,12 +103,3 @@ tab3.onclick = function(){
 	page2.classList.add('invisible');
 	page3.classList.remove('invisible');
 }
-
-var st = document.querySelectorAll(".surveyTitle");
-    for(var i =0; i < st.length; i++) {
-        st[i].onclick = function() { 
-		page1.classList.add('invisible');
-		page2.classList.remove('invisible');
-		page3.classList.add('invisible');
-	};
-    }
