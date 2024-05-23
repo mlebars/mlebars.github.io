@@ -37,8 +37,8 @@ function printSurveys(mySurveys){
 
 function getSurveyID(surveyID) {
 	console.log(surveyID);
-	var requestOptions = getRequestOptions(access_token);
-	fetch("https://api.surveymonkey.com/v3/surveys/412845494/responses/bulk", requestOptions)
+	//var requestOptions = getRequestOptions(access_token);
+	fetch("https://api.surveymonkey.com/v3/surveys/"+surveyID+"/responses/bulk")
 		.then((response) => response.text())
 		.then((result) => console.log(result))
 		.catch((error) => console.error(error));
