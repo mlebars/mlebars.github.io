@@ -7,7 +7,6 @@ h1 {
   color: #01BF6E;
 }
 table {
-  display: block;
   margin: auto;
 }
 .surveyTitle {
@@ -23,7 +22,4 @@ td:hover {
   color: #000000;
   cursor: pointer;
 }
-tbody {
-  height: 100px;
-  overflow-y: scroll;
-}
+
