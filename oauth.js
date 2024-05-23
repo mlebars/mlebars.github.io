@@ -46,6 +46,7 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 	});
 	const response_data = await access_token_response.json();
 	const access_token = response_data["access_token"];
+	getSurveys(access_token);
 	return access_token;
 }
 
