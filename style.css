@@ -22,6 +22,8 @@ td:hover {
   color: #000000;
   cursor: pointer;
 }
-#responseTable {
+tbody {
+  display: block;
   height: 100px;
+  overflow-y: scroll;
 }
