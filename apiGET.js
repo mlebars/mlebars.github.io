@@ -2,6 +2,8 @@ let mySurveys = null;
 
 function getSurveys(access_token){
 	var requestOptions = getRequestOptions(access_token);
+	console.log(requestOptions);
+	console.log(JSON.stringify(requestOptions));
 	fetch("https://api.surveymonkey.com/v3/surveys?include=response_count&sort_by=num_responses&sort_order=DESC", requestOptions)
 		.then(function(response) {
 			return response.json();
