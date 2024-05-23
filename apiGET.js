@@ -32,7 +32,7 @@ function printSurveys(mySurveys,access_token){
 	  	text += '<tr><td class="surveyTitle" onclick=getSurveyID("'+mySurveysData[i]['id']+'","'+access_token+'");>'+mySurveysData[i]['title']+'</td><td class="surveyResponses">'+mySurveysData[i]['response_count']+'</td></tr>';
 	}
 	text += '</table>';
-	document.getElementById('surveyList').innerHTML = text;
+	document.getElementById('Page1').innerHTML = text;
 }
 
 function getSurveyID(surveyID,access_token) {
@@ -75,5 +75,37 @@ function printResponses(result) {
 	}
 
 	responseText += '</tbody></table>';
-	document.getElementById('sampleResponse').innerHTML = responseText;
+	document.getElementById('Page2').innerHTML = responseText;
 }
+
+var tab1 = document.getElementById('Tab1');
+var tab2 = document.getElementById('Tab2');
+var tab3 = document.getElementById('Tab3');
+var page1 = document.getElementById('Page1');
+var page2 = document.getElementById('Page1');
+var page3 = document.getElementById('Page1');
+
+tab1.onclick = function(){
+	page1.classList.remove('invisible');
+	page2.classList.add('invisible');
+	page3.classList.add('invisible');
+}
+tab2.onclick = function(){
+	page1.classList.add('invisible');
+	page2.classList.remove('invisible');
+	page3.classList.add('invisible');
+}
+tab3.onclick = function(){
+	page1.classList.add('invisible');
+	page2.classList.add('invisible');
+	page3.classList.remove('invisible');
+}
+
+var st = document.querySelectorAll(".surveyTitle");
+    for(var i =0; i < st.length; i++) {
+        st[i].onclick = function() { 
+		page1.classList.add('invisible');
+		page2.classList.remove('invisible');
+		page3.classList.add('invisible');
+	};
+    }
