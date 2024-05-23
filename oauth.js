@@ -52,14 +52,10 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 
 if (handle_redirect(redirect_uri)) {
 	var preAuth = document.getElementById('preAuth');
-	preAuth.style.visibility = "hidden";
-	preAuth.style.height = "0";
-	preAuth.style.width = "0";
+	preAuth.classList.add('invisible');
 	var auth_code = handle_redirect(redirect_uri);
 	var userToken = exchange_code_for_token(auth_code, client_secret, client_id, redirect_uri);
 } else {
 	var postAuth = document.getElementById('postAuth');
-	postAuth.style.visibility = "hidden";
-	postAuth.style.height = "0";
-	postAuth.style.width = "0";
+	postAuth.classList.add('invisible');
 }
