@@ -25,4 +25,8 @@ td:hover {
   color: #000000;
   cursor: pointer;
 }
-
+.invisible {
+  visibility = "hidden";
+	height = "0";
+	width = "0";
+}
