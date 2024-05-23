@@ -50,6 +50,6 @@ function getSurveyID(surveyID,access_token) {
 
 
 function printResponses(result) {
-	var textResponses = result['data'][0];
+	var textResponses = JSON.stringify(result['data'][0]);
 	document.getElementById('postAuth').innerHTML = textResponses;
 }
