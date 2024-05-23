@@ -37,23 +37,9 @@ function printSurveys(mySurveys){
 
 function getSurveyID(surveyID) {
 	console.log(surveyID);
+	var requestOptions = getRequestOptions(access_token);
+	fetch("https://api.surveymonkey.com/v3/surveys/412845494/responses/bulk", requestOptions)
+		.then((response) => response.text())
+		.then((result) => console.log(result))
+		.catch((error) => console.error(error));
 }
-
-
-
-/*
-const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Authorization", "bearer cOmUpOXfevWx560egh1njqp2a6d0YkozFUQA3bgoi4m1t6AiPGBq1BNpPS-qkLy8EnAzYZdjRS6t-4SUUsV3YLvA2N0sB3PJHMw9VEZ3jILEZRtXkrOoiv3FQpXxYw5c");
-myHeaders.append("Cookie", "attr_multitouch=\"d68ZnthUwK5yHWYjwJDSLN7kLe4=\"; cdp_seg=\"RTvTqnsaYEnEQS5xUFs7jaagUus=\"; ep202=\"Ho8rOLNNhXN+6PaSHbzBaQ8wVew=\"; ep203=\"4UdjPNj2cIMU/P81GKM+STrI2S8=\"");
-
-const requestOptions = {
-  method: "GET",
-  headers: myHeaders,
-  redirect: "follow"
-};
-
-fetch("https://api.surveymonkey.com/v3/surveys/412845494/responses/bulk", requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));*/
