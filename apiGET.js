@@ -1,9 +1,3 @@
-var surveyListPage = document.getElementById('surveyList');
-var sampleResponsePage = document.getElementById('sampleResponse');
-var demoScriptPage = document.getElementById('demoScript');
-var JSPage = document.getElementById('JSPage');
-var PythonPage = document.getElementById('PythonPage');
-
 let mySurveys = null;
 
 function getSurveys(access_token){
@@ -85,19 +79,4 @@ function printResponses(result) {
 
 	responseText += '</tbody></table>';
 	document.getElementById('sampleResponse').innerHTML = responseText;
-}
-surveyListPage.onclick = function(){
-	surveyListPage.classList.remove('invisible');
-	sampleResponsePage.classList.add('invisible');
-	demoScriptPage.classList.add('invisible');
-}
-sampleResponsePage.onclick = function(){
-	surveyListPage.classList.add('invisible');
-	sampleResponsePage.classList.remove('invisible');
-	demoScriptPage.classList.add('invisible');
-}
-demoScriptPage.onclick = function(){
-	surveyListPage.classList.add('invisible');
-	sampleResponsePage.classList.add('invisible');
-	demoScriptPage.classList.remove('invisible');
 }
