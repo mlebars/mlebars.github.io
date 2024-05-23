@@ -50,7 +50,7 @@ function getSurveyID(surveyID,access_token) {
 
 
 function printResponses(result) {
-	responseText = "<table><tr><th>ID</th><th>Status</th><th>Date Created</th><th>Question</th><th>Answer</th></tr>";
+	responseText = "<table id='responseTable'><tr><th>ID</th><th>Status</th><th>Date Created</th><th>Question</th><th>Answer</th></tr>";
 	for (let r = 0; r < result['data'].length; r++) {
 		var response_id = result['data'][r]['id'];
 		var response_status = result['data'][r]['response_status'];
