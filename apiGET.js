@@ -86,19 +86,3 @@ function printResponses(result) {
 	responseText += '</tbody></table>';
 	document.getElementById('sampleResponse').innerHTML = responseText;
 }
-
-surveyListPage.onclick = function(){
-	surveyListPageobject.classList.remove('invisible');
-	sampleResponsePage.classList.add('invisible');
-	demoScriptPage.classList.add('invisible');
-}
-sampleResponsePage.onclick = function(){
-	surveyListPageobject.classList.add('invisible');
-	sampleResponsePage.classList.remove('invisible');
-	demoScriptPage.classList.add('invisible');
-}
-demoScriptPage.onclick = function(){
-	surveyListPageobject.classList.add('invisible');
-	sampleResponsePage.classList.add('invisible');
-	demoScriptPage.classList.remove('invisible');
-}
