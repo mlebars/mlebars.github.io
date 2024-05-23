@@ -82,8 +82,8 @@ var tab1 = document.getElementById('Tab1');
 var tab2 = document.getElementById('Tab2');
 var tab3 = document.getElementById('Tab3');
 var page1 = document.getElementById('Page1');
-var page2 = document.getElementById('Page1');
-var page3 = document.getElementById('Page1');
+var page2 = document.getElementById('Page2');
+var page3 = document.getElementById('Page3');
 
 tab1.onclick = function(){
 	page1.classList.remove('invisible');
