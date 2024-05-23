@@ -50,7 +50,7 @@ function getSurveyID(surveyID,access_token) {
 
 
 function printResponses(result) {
-	responseText = "<table id='responseTable'><tr><th>ID</th><th>Status</th><th>Date Created</th><th>Question</th><th>Answer</th></tr>";
+	responseText = "<table><thead><tr><th>ID</th><th>Status</th><th>Date Created</th><th>Question</th><th>Answer</th></tr></thead><tbody>";
 	for (let r = 0; r < result['data'].length; r++) {
 		var response_id = result['data'][r]['id'];
 		var response_status = result['data'][r]['response_status'];
@@ -72,6 +72,6 @@ function printResponses(result) {
 		}
 	}
 
-	responseText += '</table>';
+	responseText += '</tbody></table>';
 	document.getElementById('postAuth').innerHTML = responseText;
 }
