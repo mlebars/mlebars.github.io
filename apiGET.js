@@ -50,6 +50,11 @@ function getSurveyID(surveyID,access_token) {
 
 
 function printResponses(result) {
+	var response_id = result['data'][0]['id'];
+	var response_status = result['data'][0]['response_status'];
+	var date_created = result['data'][0]['date_created'];
+	var num_pages = result['data'][0]['pages'].length;
 	var textResponses = JSON.stringify(result['data'][0]);
+	console.log(response_id+response_status+date_created+num_pages);
 	document.getElementById('postAuth').innerHTML = textResponses;
 }
