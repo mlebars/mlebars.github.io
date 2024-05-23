@@ -34,6 +34,30 @@
           <li>JavaScript</li>
           <li>Python</li>
         </ul>
+        <div class="box">
+          <pre>
+            <code class="language-python">
+import http.client
+import json
+import csv
+
+conn = http.client.HTTPSConnection("api.surveymonkey.com")
+payload = ''
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'bearer cOmUpOXfevWx560egh1njqp2a6d0YkozFUQA3bgoi4m1t6AiPGBq1BNpPS-qkLy8EnAzYZdjRS6t-4SUUsV3YLvA2N0sB3PJHMw9VEZ3jILEZRtXkrOoiv3FQpXxYw5c'
+}
+conn.request("GET", "/v3/surveys/412845494/details", payload, headers)
+res = conn.getresponse()
+surveyDetails = res.read()
+
+conn.request("GET", "/v3/surveys/412845494/responses/bulk?simple=true", payload, headers)
+res = conn.getresponse()
+responsesBulk = res.read()
+responsesBulkDict = json.loads(responsesBulk.decode("utf-8"))
+            </code>
+          </pre>
+        </div>
       </div>
     </div>
     
