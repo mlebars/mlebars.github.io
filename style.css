@@ -30,3 +30,22 @@ td:hover {
   height: 0;
   width: 0;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+li {
+  float: left;
+  display: block;
+  color: #333333;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li:hover {
+  color: #000000;
+  text-decoration: underline;
+}
