@@ -3,6 +3,9 @@ body {
   color: #333E48;
   text-align: center;
 }
+#explanation {
+  height:100px;
+}
 h1 {
   color: #01BF6E;
 }
