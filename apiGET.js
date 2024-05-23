@@ -51,6 +51,7 @@ function getSurveyID(surveyID,access_token) {
 
 function printResponses(result) {
 	responseText = "<table><thead><tr><th>ID</th><th>Status</th><th>Date Created</th><th>Question</th><th>Answer</th></tr></thead><tbody>";
+	let i = 1;
 	for (let r = 0; r < result['data'].length; r++) {
 		var response_id = result['data'][r]['id'];
 		var response_status = result['data'][r]['response_status'];
@@ -66,7 +67,10 @@ function printResponses(result) {
 				for (let a = 0; a < answers.length; a++) {
 					var answer = answers[a];
 					var answerText = answer['simple_text'];
-					responseText += '<tr><td>'+response_id+'</td><td>'+response_status+'</td><td>'+date_created+'</td><td>'+questionTitle+'</td><td>'+answerText+'</td></tr>';
+					if (i <= 20) {
+						responseText += '<tr><td>'+response_id+'</td><td>'+response_status+'</td><td>'+date_created+'</td><td>'+questionTitle+'</td><td>'+answerText+'</td></tr>';
+						i += 1;
+					}
 				}
 			}
 		}
