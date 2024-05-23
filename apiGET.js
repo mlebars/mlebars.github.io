@@ -54,7 +54,7 @@ function printResponses(result) {
 	for (let r = 0; r < result['data'].length; r++) {
 		var response_id = result['data'][r]['id'];
 		var response_status = result['data'][r]['response_status'];
-		var date_created = result['data'][r]['date_created'];
+		var date_created = result['data'][r]['date_created'].slice(0,10);
 		var num_pages = result['data'][r]['pages'].length;
 	
 		for (let p = 0; p < num_pages; p++) {
