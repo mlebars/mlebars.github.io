@@ -22,3 +22,6 @@ td:hover {
   color: #000000;
   cursor: pointer;
 }
+#responseTable {
+  height: 100px;
+}
