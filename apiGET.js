@@ -4,7 +4,7 @@ getSurveys();
 function getSurveys(access_token){
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
-	myHeaders.append("Authorization", "bearer "+access_token;
+	myHeaders.append("Authorization", "bearer "+access_token);
 	
 	const requestOptions = {
 		method: "GET",
