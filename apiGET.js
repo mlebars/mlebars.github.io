@@ -39,8 +39,13 @@ function printSurveys(mySurveys,access_token){
 function getSurveyID(surveyID,access_token) {
 	console.log(surveyID);
 	var requestOptions = getRequestOptions(access_token);
-	fetch("https://api.surveymonkey.com/v3/surveys/"+surveyID+"/responses/bulk", requestOptions)
+	fetch("https://api.surveymonkey.com/v3/surveys/"+surveyID+"/responses/bulk?simple=true", requestOptions)
 		.then((response) => response.text())
 		.then((result) => console.log(result))
 		.catch((error) => console.error(error));
+}
+
+function printResponses(result) {
+	var textResponses = result['data'][0];
+	document.getElementById('postAuth').innerHTML = textResponses;
 }
