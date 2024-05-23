@@ -44,8 +44,7 @@ function getSurveyID(surveyID,access_token) {
 			return response.json();
 		})
 		.then(function(data) {
-			myResponses = data;
-			console.log(data);
+			printResponses(data)
 		});
 }
 
