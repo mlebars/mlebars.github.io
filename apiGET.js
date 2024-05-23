@@ -33,7 +33,7 @@ function printSurveys(mySurveys,access_token){
 	  	text += '<tr><td class="surveyTitle" onclick=getSurveyID("'+mySurveysData[i]['id']+'","'+access_token+'");>'+mySurveysData[i]['title']+'</td><td class="surveyResponses">'+mySurveysData[i]['response_count']+'</td></tr>';
 	}
 	text += '</table>';
-	document.getElementById('postAuth').innerHTML = text;
+	document.getElementById('surveyList').innerHTML = text;
 }
 
 function getSurveyID(surveyID,access_token) {
@@ -77,5 +77,5 @@ function printResponses(result) {
 	}
 
 	responseText += '</tbody></table>';
-	document.getElementById('postAuth').innerHTML = responseText;
+	document.getElementById('sampleResponse').innerHTML = responseText;
 }
