@@ -1,6 +1,4 @@
 let mySurveys = null;
-getSurveys();
-
 function getSurveys(access_token){
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
