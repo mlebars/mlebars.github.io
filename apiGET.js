@@ -1,3 +1,9 @@
+var surveyListPage = document.getElementByID('surveyList');
+var sampleResponsePage = document.getElementByID('sampleResponse');
+var demoScriptPage = document.getElementByID('demoScript');
+var JSPage = document.getElementByID('JSPage');
+var PythonPage = document.getElementByID('PythonPage');
+
 let mySurveys = null;
 
 function getSurveys(access_token){
@@ -26,7 +32,6 @@ function getRequestOptions(access_token) {
 }
 
 function printSurveys(mySurveys,access_token){
-	//var requestOptions = requestOptions;
 	var mySurveysData = mySurveys['data'];
 	var text = "<table><tr><th>Survey Title</th><th>Response(s)</th></tr>";
 	for (let i = 0; i < mySurveysData.length; i++) {
@@ -37,7 +42,9 @@ function printSurveys(mySurveys,access_token){
 }
 
 function getSurveyID(surveyID,access_token) {
-	console.log(surveyID);
+	surveyListPage.classList.add('invisible');
+	sampleResponsePage.classList.remove('invisible');
+	demoScriptPage.classList.add('invisible');
 	var requestOptions = getRequestOptions(access_token);
 	fetch("https://api.surveymonkey.com/v3/surveys/"+surveyID+"/responses/bulk?simple=true", requestOptions)
 		.then(function(response) {
@@ -78,4 +85,20 @@ function printResponses(result) {
 
 	responseText += '</tbody></table>';
 	document.getElementById('sampleResponse').innerHTML = responseText;
+}
+
+surveyListPage.onclick = function(){
+	surveyListPageobject.classList.remove('invisible');
+	sampleResponsePage.classList.add('invisible');
+	demoScriptPage.classList.add('invisible');
+}
+sampleResponsePage.onclick = function(){
+	surveyListPageobject.classList.add('invisible');
+	sampleResponsePage.classList.remove('invisible');
+	demoScriptPage.classList.add('invisible');
+}
+demoScriptPage.onclick = function(){
+	surveyListPageobject.classList.add('invisible');
+	sampleResponsePage.classList.add('invisible');
+	demoScriptPage.classList.remove('invisible');
 }
