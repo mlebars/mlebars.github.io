@@ -59,7 +59,7 @@ function printResponses(result) {
 		var num_pages = result['data'][r]['pages'].length;
 	
 		for (let p = 0; p < num_pages; p++) {
-		  	var questions = result['data'][0]['pages'][p]['questions'];
+		  	var questions = result['data'][r]['pages'][p]['questions'];
 			for (let q = 0; q < questions.length; q++) {
 				var question = questions[q];
 				var questionTitle = question['heading'];
