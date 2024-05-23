@@ -36,9 +36,6 @@ function printSurveys(mySurveys,access_token){
 }
 
 function getSurveyID(surveyID,access_token) {
-	surveyListPage.classList.add('invisible');
-	sampleResponsePage.classList.remove('invisible');
-	demoScriptPage.classList.add('invisible');
 	var requestOptions = getRequestOptions(access_token);
 	fetch("https://api.surveymonkey.com/v3/surveys/"+surveyID+"/responses/bulk?simple=true", requestOptions)
 		.then(function(response) {
