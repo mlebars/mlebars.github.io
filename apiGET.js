@@ -4,6 +4,10 @@ var tab3 = document.getElementById('Tab3');
 var page1 = document.getElementById('Page1');
 var page2 = document.getElementById('Page2');
 var page3 = document.getElementById('Page3');
+var TabJS = document.getElementById('TabJS');
+var TabPy = document.getElementById('TabPy');
+var DivJS = document.getElementById('javascript');
+var DivPy = document.getElementById('python');
 
 let mySurveys = null;
 
@@ -102,4 +106,12 @@ tab3.onclick = function(){
 	page1.classList.add('invisible');
 	page2.classList.add('invisible');
 	page3.classList.remove('invisible');
+}
+TabJS.onclick = function(){
+	DivJS.classList.remove('invisible');
+	DivPy.classList.add('invisible');
+}
+TabPy.onclick = function(){
+	DivJS.classList.add('invisible');
+	DivPy.classList.remove('invisible');
 }
