@@ -34,7 +34,7 @@
           <li>JavaScript</li>
           <li>Python</li>
         </ul>
-        <div class="box">
+        <div id="python" class="box">
           <pre>
             <code class="language-python" data-prismjs-copy="Copy Python Code">
 import http.client
@@ -77,6 +77,54 @@ for r in range(0,len(responsesBulkDict['data'])) :
     r += 1
 
 print(result)
+            </code>
+          </pre>
+        </div>
+        <div id="javascript" class="box">
+          <pre>
+            <code class="language-js" data-prismjs-copy="Copy JavaScript Code">
+const bearerToken = "Token" #Replace with your token! 
+              
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", "bearer "+bearerToken);
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+
+function getResponses() {
+  fetch("https://api.surveymonkey.com/v3/surveys/"+surveyId+"/responses/bulk?simple=true", requestOptions)
+    .then((response) => response.text())
+    .then((result) => printResponses(result))
+    .catch((error) => console.error(error));
+}
+
+function printResponses(result) {
+  let resultTable = [];
+  for (let r = 0; r &lt; result['data'].length; r++) {
+		var response_id = result['data'][r]['id'];
+		var response_status = result['data'][r]['response_status'];
+		var date_created = result['data'][r]['date_created'].slice(0,10);
+		var num_pages = result['data'][r]['pages'].length;
+		for (let p = 0; p &lt; num_pages; p++) {
+		  	var questions = result['data'][r]['pages'][p]['questions'];
+			for (let q = 0; q &lt; questions.length; q++) {
+				var question = questions[q];
+				var questionTitle = question['heading'];
+				var answers = question['answers'];
+				for (let a = 0; a &lt; answers.length; a++) {
+					var answer = answers[a];
+					var answerText = answer['simple_text'];
+          resultTable += [response_id,response_status,date_created,questionTitle,answerText];
+					}
+				}
+			}
+		}
+    console.log(resultTable);
+	}
             </code>
           </pre>
         </div>
