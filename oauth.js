@@ -41,6 +41,9 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
 			"Accept": "application/json",
 			//"mode": "no-cors",
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Methods": "GET; POST; PATCH; PUT; DELETE; OPTIONS",
+			"Access-Control-Allow-Headers": "Origin; Content-Type; X-Auth-Token",
 			"Authorization": myAccessToken
 		},
 		"body": formBody
