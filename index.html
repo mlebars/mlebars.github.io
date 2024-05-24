@@ -39,22 +39,44 @@
             <code class="language-python" data-prismjs-copy="Copy Python Code">
 import http.client
 import json
-import csv
+
+bearerToken = "Token" #Replace with your token! 
+surveyId = '412845494'
 
 conn = http.client.HTTPSConnection("api.surveymonkey.com")
 payload = ''
 headers = {
   'Content-Type': 'application/json',
-  'Authorization': 'bearer cOmUpOXfevWx560egh1njqp2a6d0YkozFUQA3bgoi4m1t6AiPGBq1BNpPS-qkLy8EnAzYZdjRS6t-4SUUsV3YLvA2N0sB3PJHMw9VEZ3jILEZRtXkrOoiv3FQpXxYw5c'
+  'Authorization': 'bearer '+bearerToken
 }
-conn.request("GET", "/v3/surveys/412845494/details", payload, headers)
-res = conn.getresponse()
-surveyDetails = res.read()
 
-conn.request("GET", "/v3/surveys/412845494/responses/bulk?simple=true", payload, headers)
+conn.request("GET", "/v3/surveys/"+surveyId+"/responses/bulk?simple=true", payload, headers)
 res = conn.getresponse()
 responsesBulk = res.read()
 responsesBulkDict = json.loads(responsesBulk.decode("utf-8"))
+
+result = []
+for r in range(0,len(responsesBulkDict['data'])) :
+    response_id = responsesBulkDict['data'][r]['id']
+    response_status = responsesBulkDict['data'][r]['response_status']
+    date_created = responsesBulkDict['data'][r]['date_created']
+    num_pages = len(responsesBulkDict['data'][r]['pages'])
+    for p in range(0,num_pages) :                
+        questions = responsesBulkDict['data'][r]['pages'][p]['questions']
+        for q in range(0,len(questions)) :
+            question = questions[q]
+            questionTitle = question['heading']
+            answers = question['answers']
+            for a in range(0,len(answers)) :
+                answer = answers[a]
+                answerText = answer['simple_text']
+                result.append([response_id, response_status, date_created, questionTitle, answerText])
+                a += 1            
+            q += 1
+        p += 1
+    r += 1
+
+print(result)
             </code>
           </pre>
         </div>
