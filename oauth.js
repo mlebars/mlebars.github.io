@@ -40,6 +40,7 @@ async function exchange_code_for_token(auth_code, client_secret, client_id, redi
 		"headers": {
 			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
 			"Accept": "application/json",
+			"mode": "cors",
 			"Authorization": myAccessToken
 		},
 		"body": formBody
